@@ -7,11 +7,11 @@ class App {
     public function __construct()
     {
         $url = $this->parseURL();
-        var_dump($url);
 
         if (!empty($url) && file_exists("../app/controllers/" . $url[0] . ".php")) {
             $this->controller = $url[0];
             unset($url[0]);
+
         }
 
         require "../app/controllers/" . $this->controller . ".php";
@@ -21,6 +21,7 @@ class App {
         if (isset($url[1]) && method_exists($this->controller, $url[1])) {
             $this->method = $url[1];
             unset($url[1]);
+
         }
 
         // Sistem params
@@ -41,3 +42,4 @@ class App {
         return [];
     }
 }
+new App();
