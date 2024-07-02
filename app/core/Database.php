@@ -48,7 +48,7 @@ class Database {
         $this->statement->bindValue($param,$value,$type);
     }
 
-    private function execute(){
+    public function execute(){
         $this->statement->execute();
     }
 
@@ -60,5 +60,9 @@ class Database {
     public function single(){
         $this->execute();
         return $this->statement->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function rowCount(){
+        return $this->statement->rowCount();
     }
 }
